@@ -12,14 +12,14 @@ pages = len(pdf_reader.pages)
 # Initialize TTS engine
 player = pyttsx3.init()
 
-# ---- Voice Configuration ----
+# Voice Configuration
 voices = player.getProperty('voices')
 player.setProperty('voice', voices[0].id)   # 0 for male, 1 for female (varies by system)
 player.setProperty('rate', 100)             # Speech speed (default ~200)
 player.setProperty('volume', 1.0)           # Volume (0.0 to 1.0)
 
-# ---- Pitch Control ----
-# ⚠️ pyttsx3 doesn’t have a direct 'pitch' property,
+# Pitch Control
+# pyttsx3 doesn’t have a direct 'pitch' property,
 # but you can simulate pitch by changing the speech rate or using engine-specific SSML tags.
 
 def set_pitch(pitch_value: int):
@@ -41,6 +41,7 @@ for num in range(pages):
         player.say(f'<pitch middle="{pitch_value}">{text}</pitch>', name=f'page_{num}')
 
 player.runAndWait()
+
 
 
 
